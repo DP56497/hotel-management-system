@@ -9,7 +9,7 @@ const generateToken = (id) => {
 // @desc    Register a new user
 // @route   POST /api/auth/signup
 exports.signup = async (req, res) => {
-  const { fullName, email, password, role, hotelDetails } = req.body;
+  const { fullName, email, password, role, hotelDetails, department } = req.body;
   
   try {
     const userExists = await User.findOne({ email });
@@ -23,6 +23,7 @@ exports.signup = async (req, res) => {
       password,
       role,
       hotelDetails,
+      department,
       status: role === 'Owner' ? 'Approved' : 'Pending'
     });
 
@@ -33,6 +34,7 @@ exports.signup = async (req, res) => {
         email: user.email,
         role: user.role,
         hotelDetails: user.hotelDetails,
+        department: user.department,
         status: user.status,
         token: generateToken(user._id)
       });
