@@ -27,6 +27,11 @@ const userSchema = new mongoose.Schema({
     state: { type: String },
     district: { type: String }
   },
+  department: {
+    type: String,
+    enum: ['Gujarati food dish', 'Punjabi food dish', 'Chinese food dish', 'South Indian food dish'],
+    required: false
+  },
   status: {
     type: String,
     enum: ['Pending', 'Approved', 'Rejected'],
