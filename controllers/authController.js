@@ -24,7 +24,7 @@ exports.signup = async (req, res) => {
       role,
       hotelDetails,
       department,
-      status: role === 'Owner' ? 'Approved' : 'Pending'
+      status: 'Approved'
     });
 
     if (user) {
